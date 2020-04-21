@@ -8,7 +8,6 @@ typedef struct kucha
 	int data[500000];
 }kucha;
 
-
 int sift_up(int n, kucha* k)
 {
 	int temp;
@@ -18,10 +17,8 @@ int sift_up(int n, kucha* k)
 		k->data[n] = k->data[(n - ((n % 2 != 0) ? (1) : (2))) / 2];
 		k->data[(n - ((n % 2 != 0) ? (1) : (2))) / 2] = temp;
 		n = (n - ((n % 2 != 0) ? (1) : (2))) / 2;
-		//printf("NOM->%d\n", n);
 	}
 	return n;
-
 }
 
 int sift_down(int n, kucha* k)
@@ -29,7 +26,6 @@ int sift_down(int n, kucha* k)
 	int temp,tt;
 	while (n < k->end && n * 2 + ((k->data[n * 2 + 1] <= k->data[n * 2 + 2] && n*2 + 2 <= k->end)?(2):(1)) <= k->end && k->data[n] < k->data[n*2 + ((k->data[n * 2 + 1] <= k->data[n * 2 + 2] && n * 2 + 2 <= k->end) ? (2) : (1))])
 	{
-		//printf("NOM->%d__N!->%d\n", n, n * 2 + ((k->data[n * 2 + 1] <= k->data[n * 2 + 2] && n * 2 + 2 <= k->end) ? (2) : (1)));
 		temp = k->data[n];
 		tt = n * 2 + ((k->data[n * 2 + 1] <= k->data[n * 2 + 2] && n * 2 + 2 <= k->end) ? (2) : (1));
 		k->data[n] = k->data[tt];
@@ -37,7 +33,6 @@ int sift_down(int n, kucha* k)
 		n = tt;
 	}
 	return n;
-	
 }
 
 int uppr(int x,int nom, kucha* k)
@@ -62,18 +57,15 @@ kucha K;
 int main()
 {
 	int n,n1, m;
-	
 	scanf("%d", &n);
 	for (int i = 0; i < n; i++)
 	{
 		scanf("%d", &K.data[i]);
 		K.end = i;
 	}
-	//scanf("%d", &n1);
 	for (int i = 0; i < n - 1; i++)
 	{
 		m = K.data[0];
-		//printf("%d\n",uppr(x, m - 1, &K) + 1);
 		printf("%d %d\n",Ext_max(&K) +1 ,m);
 	}
 }
