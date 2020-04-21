@@ -19,7 +19,6 @@ int sift_up(int n, kucha* k)
 		k->data[n] = k->data[(n - ((n % 2 != 0) ? (1) : (2))) / 2];
 		k->data[(n - ((n % 2 != 0) ? (1) : (2))) / 2] = temp;
 		n = (n - ((n % 2 != 0) ? (1) : (2))) / 2;
-		//printf("NOM->%d\n", n);
 	}
 	return n;
 
@@ -30,7 +29,6 @@ int sift_down(int n, kucha* k)
 	int temp,tt;
 	while (n < k->end && n * 2 + ((k->data[n * 2 + 1] <= k->data[n * 2 + 2] && n*2 + 2 <= k->end)?(2):(1)) <= k->end && k->data[n] < k->data[n*2 + ((k->data[n * 2 + 1] <= k->data[n * 2 + 2] && n * 2 + 2 <= k->end) ? (2) : (1))])
 	{
-		//printf("NOM->%d__N!->%d\n", n, n * 2 + ((k->data[n * 2 + 1] <= k->data[n * 2 + 2] && n * 2 + 2 <= k->end) ? (2) : (1)));
 		temp = k->data[n];
 		tt = n * 2 + ((k->data[n * 2 + 1] <= k->data[n * 2 + 2] && n * 2 + 2 <= k->end) ? (2) : (1));
 		k->data[n] = k->data[tt];
@@ -67,7 +65,6 @@ int main()
 	for (int i = 0; i < n1; i++)
 	{
 		scanf("%d%d", &m,&x);
-		//printf("%d\n",uppr(x, m - 1, &K) + 1);
 		printf("%d\n",dopr(x, m - 1, &K) + 1);
 	}
 	for (int i = 0; i < n; i++)
