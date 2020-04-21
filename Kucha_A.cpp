@@ -63,7 +63,6 @@ int main()
 	{
 		scanf("%d%d", &m,&x);
 		printf("%d\n",uppr(x, m - 1, &K) + 1);
-		//dopr(x, m - 1, &K);
 	}
 	for (int i = 0; i < n; i++)
 		printf("%d ", K.data[i]);
