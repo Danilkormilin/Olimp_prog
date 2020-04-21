@@ -2,7 +2,6 @@
 #include<math.h>
 #include<stdlib.h>
 
-//int stack[100];
 char cmd[10];
 int last = 0, temp;
 long long razmer = 0,r = 0;
@@ -12,8 +11,6 @@ int Nn = 0;
 void plus(int nov)
 {
 	r += 10;
-	//razmer++;
-	//Nn += razmer;
 	int* mas = (int*)malloc(r * sizeof(int));
 	for (int i = 0; i < razmer - 1; i++)
 	{
@@ -23,20 +20,15 @@ void plus(int nov)
 	if (r > 10)
 		free(ar);
 	ar = mas;
-	//free(mas);
 }
 
 void minus()
 {
 	razmer--;
-	//int* mas = (int*)malloc(razmer * sizeof(int));
 	for (int i = 0; i < razmer; i++)
 	{
 		ar[i] = ar[i+1];
 	}
-	//if(razmer > 20)
-	//free(ar);
-	//ar = mas;
 }
 int main()
 {
@@ -87,8 +79,6 @@ int main()
 		else
 		{
 			printf("bye");
-			//if (razmer > 1)
-			//	free(ar);
 			return(0);
 		}
 	}
