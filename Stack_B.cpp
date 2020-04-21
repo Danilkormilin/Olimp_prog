@@ -16,7 +16,6 @@ int main()
 				last--;
 			}
 			else printf("error\n");
-
 		}
 		else if (cmd[0] == 'p' && cmd[1] == 'u')
 		{
