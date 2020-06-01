@@ -1,0 +1,41 @@
+#include <iostream>
+
+ using namespace std;
+
+typedef struct Stack
+{
+    int last;
+    int data[1000];
+} Stack;
+
+int last(Stack* s)
+{
+    return ((s)->data[s->last]);
+}
+
+void initialise(Stack* s)
+{
+    s->last = -1;
+}
+
+void del(Stack* s)
+{
+    s->last--;
+}
+
+void pushnew(Stack* s, char n)
+{
+    s->data[++s->last] = n;
+}
+
+int emptystack(Stack* s)
+{
+    if (s->last == -1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
