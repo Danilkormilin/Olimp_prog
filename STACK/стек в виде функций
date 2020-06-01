@@ -8,7 +8,7 @@ typedef struct Stack
     int data[1000];
 } Stack;
 
-int stack_top(Stack* s)
+int stack_last(Stack* s)
 {
     return ((s)->data[s->last]);
 }
@@ -18,12 +18,12 @@ void stack_init(Stack* s)
     s->last = -1;
 }
 
-void stack_pop(Stack* s)
+void del(Stack* s)
 {
     s->last--;
 }
 
-void stack_push(Stack* s, char n)
+void push(Stack* s, char n)
 {
     s->data[++s->last] = n;
 }
