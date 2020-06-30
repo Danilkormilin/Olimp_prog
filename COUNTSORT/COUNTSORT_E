@@ -1,0 +1,68 @@
+﻿#include<stdio.h>
+#include<math.h>
+int n, a[1001] = { 0 }, c[10001] = { 0 }, kolvo = 0;;
+char b[1001][101];
+
+int main()
+{
+	int temp ,max = 0, maxi = -1;
+	char temp2;
+	scanf("%d", &n);
+	for (int i = 1; i <= n; i++)
+	{
+		scanf("%d%c", &temp, &temp2);
+		if (temp == 0)
+		{
+			a[i]++;
+			if (a[i] > max)
+			{
+				max = a[i];
+				maxi = i;
+			}
+			for (int j = 0; j < 100; j++)
+			{
+				scanf("%c", &b[i][j]);
+				if (b[i][j] == '\n') break;
+			}
+			for (int j = 0; j < 100; j++)
+			{
+				scanf("%c", &temp2);
+				if (temp2 == '\n') break;
+			}
+		}
+		else
+		{
+			if (a[temp] != 0)
+			{
+				a[temp]++;
+				if (a[temp] > max)
+				{
+					max = a[temp];
+					maxi = temp;
+				}
+				c[i] = temp;
+			}
+			else
+			{
+				a[c[temp]]++;
+				if (a[c[temp]] > max)
+				{
+					max = a[c[temp]];
+					maxi = c[temp];
+				}
+				c[i] = c[temp];
+			}
+			for (int j = 0; j < 100; j++)
+			{
+				scanf("%c", &temp2);
+				if (temp2 == '\n') break;
+			}
+		}
+	}
+	for (int i = 0; i < 100; i++)
+	{
+		printf("%c", b[maxi][i]);
+		if (b[maxi][i] == '\n') break;
+	}
+	return (0);
+}
