@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+    int A[2000], n, kolvo = 0;
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &A[i]);
+    }
+    for (int j = n- 1; j >= 1; j--)
+    {
+        int k = 0;
+        for (int i = 0; i < j; i++)
+        {
+            if (A[i] > A[i + 1])
+            {
+                int t = A[i];
+                A[i] = A[i + 1];
+                A[i + 1] = t;
+                k++;
+            }
+        }
+        kolvo += k;
+        if (k == 0) break;
+    }
+    /*for (int i = 0; i < n; i++)
+    {
+        printf("%d ", A[i]);
+    }*/
+    printf("%d", kolvo);
+    return (0);
+}
