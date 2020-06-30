@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+using namespace std;
+typedef struct
+{
+    int qh, qt;
+    int val[11];
+} queue;
+void push(queue * q, int n)
+{
+    q -> val[(q->qt++) % 11] = n;
+}
+int pop(queue * q)
+{
+    return q -> val[(q -> qh++) % 11];
+    
+}
+int size(queue * q)
+{
+    return ((q -> qt) - (q -> qh)) % 11;
+}
+int main()
+{
+    int x1, x2, n = 0;
+    queue A1, A2;
+    A1.qh = A1.qt = A2.qh = A2.qt = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        cin >> x1;
+        push(&A1, x1);
+    }
+    for (int i = 0; i < 5; i++)
+    {
+        cin >> x2;
+        push(&A2, x2);
+    }
+    while (1)
+    {
+        if (size(&A1) * size(&A2) == 0) break;
+        n++;
+        if (n == 1000000) { cout << "botva" << endl; return 0;}
+        x1 = pop(&A1);
+        x2 = pop(&A2);
+        if ((x1 == 0 and x2 == 9) or (x1 == 9 and x2 != 0) or (x1 != 9 and x1 > x2))
+        {
+            push(&A1, x1);
+            push(&A1, x2);
+        }
+        if ((x2 == 0 and x1 == 9) or (x2 == 9 and x1 != 0) or (x2 != 9 and x2 > x1))
+        {
+            push(&A2, x1);
+            push(&A2, x2);
+        }
+    }
+    if (size(&A1) != 0)
+    {
+       cout << "first ";
+    }
+    else 
+    {
+       cout << "second ";
+    }
+    cout << n << endl;
+    return 0;
+}
