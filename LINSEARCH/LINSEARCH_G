@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+    int min1,min2,vx,n;
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++)
+    {
+        scanf("%d", &vx);
+        if (i == 1)
+        {
+            min1 = vx;
+        }
+        else if (i == 2)
+        {
+            if (vx < min1)
+            {
+                min2 = min1;
+                min1 = vx;
+            }
+        }
+        else
+        {
+            if (vx < min1)
+            {
+                min2 = min1;
+                min1 = vx;
+            }
+            else if (vx < min2)
+            {
+                min2 = vx;
+            }
+        }
+    }
+    printf("%d %d", min1, min2);
+    return (0);
+}
