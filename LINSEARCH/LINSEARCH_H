@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+    int n, a[200] = { 0 }, X, vx;
+    scanf("%d", &X);
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+        {
+            scanf("%d", &vx);
+            if (vx == X) a[j] = 1;
+        }
+    for (int j = 0; j < n; j++)
+    {
+        if (a[j] == 1) printf("YES\n");
+        else printf("NO\n");
+    }
+    return (0);
+}
