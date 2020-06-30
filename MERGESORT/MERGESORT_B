@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<math.h>
+int n, a[100000],b[100000];
+
+void merge(int st1, int mid,int end)
+{
+	int i = st1, j = st1, k = mid;
+	while (j < mid && k < end)
+	{
+		if (b[j] <= b[k])
+		{
+			a[i] = b[j];
+			i++;
+			j++;
+		}
+		else
+		{
+			a[i] = b[k];
+			i++;
+			k++;
+		}
+	}
+	while (j < mid)
+	{
+		a[i] = b[j];
+		i++;
+		j++;
+	}
+	while (k < mid)
+	{
+		a[i] = b[k];
+		i++;
+		k++;
+	}
+}
+
+void merge_sort(int start, int end)
+{
+	if (end - start == 1)
+	{
+		return;
+	}
+	int mid = (start + end) / 2;
+	merge_sort(start, mid);
+	merge_sort(mid, end);
+	for (int i = 0; i < end; i++)
+	{
+		b[i] = a[i];
+	}
+	merge(start, mid, end);
+	return;
+}
+
+int main()
+{
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d", &a[i]);
+	}
+	merge_sort(0, n);
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d ", a[i]);
+	}
+	return (0);
+}
