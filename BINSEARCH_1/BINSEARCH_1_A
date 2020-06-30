@@ -1,0 +1,51 @@
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{   
+    long n, k, a[100002] ,g;
+    scanf("%ld %ld", &n, &k);
+    for (int i = 0; i < n; i++) scanf("%ld", &a[i]);
+    for (int i = 0; i < k; i++)
+    {
+        scanf("%ld", &g);
+        long lreal, rreal;
+        int left = -1, right = n,mid,lf = 0,rf = 0;
+        while (right - left > 1)
+        {
+            mid = (left + right) / 2;
+            if (a[mid] < g) left = mid;
+            else right = mid;
+        }
+        lreal = left;
+        right = n; left = -1;
+        while (right - left > 1)
+        {
+            mid = (left + right) / 2;
+            if (a[mid] <= g) left = mid;
+            else right = mid;
+        }
+        rreal = right;
+        if (rreal - lreal > 1)
+        {
+            printf("%ld\n", g);
+        }
+        else if (rreal == n)
+        {
+            printf("%d\n", a[lreal]);
+        }
+        else if (lreal == -1)
+        {
+            printf("%d\n", a[rreal]);
+        }
+        else
+        {
+            if (g - a[lreal] <= a[rreal] - g)
+            {
+                printf("%d\n", a[lreal]);
+            }
+            else printf("%d\n", a[rreal]);
+        }
+    }
+    return(0);
+}
