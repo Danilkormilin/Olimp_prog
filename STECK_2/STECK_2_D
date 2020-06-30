@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+typedef struct
+{
+    int sp;
+    int val[100001];
+} stack;
+
+void push(stack * s, int n)
+{
+    s -> val[s -> sp++] = n;
+}
+
+int pop(stack * s)
+{
+    return s -> val[-- s -> sp];
+}
+
+int main()
+{
+    stack s;
+    s.sp = 0;
+    char x;
+    int a, b;
+    while (cin >> x)
+    {
+        if (x != '+' && x != '-' && x != '*') push(&s, (x - '0'));
+        else
+        {
+            b = pop(&s);
+            a = pop(&s);
+            if (x == '+'){
+                    a += b;
+               }
+                else if (x == '-'){
+                    a -= b;
+                }
+                else if (x == '*'){
+                    a *= b;
+                }
+            push(&s, a);
+         }
+    }
+    cout << pop(&s) << endl;
+    return 0;
+}
