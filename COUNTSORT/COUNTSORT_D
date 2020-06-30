@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<math.h>
+int n, a[215] = { 0 },mod;
+
+int main()
+{
+	int temp;
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d", &temp);
+		if (i == 0) mod = temp - 107;
+		a[temp - mod]++;
+	}
+	for (int i = 0; i < 215; i++)
+		if (a[i] != 0)
+			for (int j = 0; j < a[i]; j++)
+				printf("%d ", i + mod);
+	return (0);
+}
