@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+    int A[2001] = { 0 }, vx, n;
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &vx);
+        A[vx + 1000]++;
+    }
+    scanf("%d", &vx);
+    if (A[vx + 1000] > 0) printf("YES");
+    else printf("NO");
+    return (0);
+}
