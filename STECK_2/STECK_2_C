@@ -1,0 +1,70 @@
+#include <iostream>
+#include <string>
+#include <stdio.h>
+
+typedef struct
+{
+    int top;
+    char val[100001];
+} stack;
+void push(stack * s, int n)
+{
+    s -> val[s -> top++] = n;
+}
+char pop(stack * s)
+{
+    return s -> val[-- s -> top];
+    
+}
+int main()
+{
+    stack s;
+    s.top = 0;
+    int N = 0;
+    char c, p;
+    while (std::cin >> c)
+    {
+        N++;
+        if (c == '(' || c == '[' || c == '{') push(&s, c);
+        else
+        {
+            if (s.top == 0) 
+               {
+                  printf("no\n");
+                  return 0;
+                  }
+            else
+            {
+                p = pop(&s);
+                switch(p)
+                {
+                    case '(':
+                        if (c != ')') 
+                           {
+                              printf("no\n");
+                              return 0;
+                              }
+                        break;
+                    case '[':
+                        if (c != ']')
+                           {
+                              printf("no\n"); 
+                              return 0;
+                              }
+                        break;
+                    case '{':
+                        if (c != '}') 
+                           {
+                              printf("no\n"); 
+                              return 0;
+                              }
+                        break;
+                }
+            }
+        }
+        
+    }
+    if (s.top == 0)printf("yes\n");
+    else printf("no\n");
+    return 0;
+}
