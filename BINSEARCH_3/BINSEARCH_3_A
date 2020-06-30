@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+    double d, b, a, left = 0, right, eps = 0.000000000001, rez;
+    int n;
+    scanf("%lf %d", &a, &n);
+    if (a <= 1)
+    {
+        left = a;
+        right = 1;
+        while (right - left > eps)
+        {
+            b = (left + right) / 2;
+            d = pow(b, n);
+            if (d < a) left = b;
+            else right = b;
+        }
+        printf("%.11lf", (left + right) / 2);
+    }
+    else
+    {
+        left = 1; 
+        right = a;
+        while (right - left > eps)
+        {
+            b = (left + right) / 2;
+            d = pow(b, n);
+            if (fabs(d - a) < eps) break;
+            else if (d < a) left = b;
+            else right = b;
+        }
+        printf("%.11lf", (left + right) / 2);
+    }
+       
+    return(0);
+}
