@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<math.h>
+int mins[750], maxs[750], A[750][750];
+int main()
+{
+    int n, m, kolvo = 0;
+    scanf("%d %d\n", &n, &m);
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < m; j++)
+        {
+            scanf("%d", &A[i][j]);
+            if (i == 0) maxs[j] = A[i][j];
+            else if (A[i][j] > maxs[j]) maxs[j] = A[i][j];
+            if (j == 0) mins[i] = A[i][j];
+            else if (A[i][j] < mins[i]) mins[i] = A[i][j];
+        }
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < m; j++)
+            if (A[i][j] == mins[i] && A[i][j] == maxs[j]) kolvo++;
+    printf("%d", kolvo);
+    return (0);
+}
