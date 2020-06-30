@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+    int B[1001] = { 0 }, vx, n, max = -2000;
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++)
+    {
+        scanf("%d", &vx);
+        if (vx > max) max = vx;
+    }
+    printf("%d", max);
+    return (0);
+}
