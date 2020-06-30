@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+	long long i = 1, j = 1, k = 1,x;
+	scanf("%lld", &x);
+	while (1)
+	{
+		if (j * j == k * k * k)
+		{
+			if (i == x)
+			{
+				printf("%lld", j * j);
+				return (0);
+			}
+			i++;
+			j++;
+			k++;
+			
+		}
+		else if (j * j < k* k* k)
+		{
+			if (i == x)
+			{
+				printf("%lld", j * j);
+				return (0);
+			}
+			i++;
+			j++;
+			
+		}
+		else
+		{
+			if (i == x)
+			{
+				printf("%lld", k * k * k);
+				return (0);
+			}
+			i++;
+			k++;
+			
+		}
+	}
+	return (0);
+}
