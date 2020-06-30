@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include<math.h>
+int B[2001], A[2001];
+int main()
+{
+    int A[2001], n,m,kolvo = 0;
+    scanf("%d %d", &n, &m);
+    m *= n;
+    for (int i = 0; i < m; i++)
+    {
+        scanf("%d", &A[i]);
+    }
+    for (int j = m- 1; j >= 1; j--)
+    {
+        int k = 0;
+        for (int i = 0; i < j; i++)
+        {
+            if (A[i] > A[i + 1])
+            {
+                int t = A[i];
+                A[i] = A[i + 1];
+                A[i + 1] = t;
+                k++;
+            }
+        }
+        if (k == 0) break;
+    }
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &B[i]);
+    }
+    for (int j = n - 1; j >= 1; j--)
+    {
+        int k = 0;
+        for (int i = 0; i < j; i++)
+        {
+            if (B[i] > B[i + 1])
+            {
+                int t = B[i];
+                B[i] = B[i + 1];
+                B[i + 1] = t;
+                k++;
+            }
+        }
+        if (k == 0) break;
+    }
+    int h = 0;
+    for (int i = 0; i < n; i++)
+    {
+        int fl = 1;
+        for (int j = h; j < m; j++)
+        {
+            fl = 0;
+            if (B[i] <= A[j])
+            {
+                kolvo++;
+                h = j + 1;
+                break;
+            }
+        }
+        if (fl == 1) break;
+    }
+    printf("%d", kolvo);
+    return (0);
+}
