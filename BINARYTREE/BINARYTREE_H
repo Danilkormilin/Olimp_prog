@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <iostream>
+using namespace std;
+int f = 1;
+typedef struct _node
+{
+    int key;
+    struct _node *left, *right;
+} node;
+node* crnode(int val)
+{
+    node* nnode = (node*) malloc(sizeof(node));
+    nnode->key = val;
+    nnode->left = NULL;
+    nnode->right = NULL;
+    return nnode;
+}
+node* add_tree(node *root, int val)
+{
+    if (NULL == root) root = crnode(val);
+    if (val < root->key)
+    {
+        if (NULL == root->left)
+            root->left = crnode(val);
+        else
+            add_tree(root->left, val);
+    }
+    if (val > root->key)
+    {
+        if (NULL == root->right)
+            root->right = crnode(val);
+        else
+            add_tree(root->right, val);
+    }
+    return root;
+}
+int node_height(const node* root)
+{
+    int l, r, h = 0;
+    if(root != NULL)
+    {
+        l = node_height(root -> left);
+        r = node_height(root -> right);
+        h = ((l > r) ? l : r) + 1;
+    }
+    return h;
+}
+int print_tree(node *root)
+{
+    int hl, hr;
+    if (root != NULL)
+    {
+        hl = node_height(root->left);
+        print_tree(root->left);
+        print_tree(root->right);
+        hr = node_height(root->right);
+        root->key = hr-hl;
+        if (root->key <= -2 || root-> key >= 2) f = 0;
+    }
+    return f;
+}
+int main()
+{
+    int a;
+    node * tree = NULL;
+    while (1)
+    {
+        scanf("%d", &a);
+        if (a == 0) break;
+        tree = add_tree(tree, a);
+    }
+    if (print_tree(tree) == 1) printf("YES\n");
+    else printf("NO\n");
+    return 0;
+}
