@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+	double c, left = 0,right = 100000,eps = 0.00000001, mid;
+	scanf("%lf", &c);
+	while (right - left > eps)
+	{
+		mid = (left + right) / 2;
+		if (mid * mid + sqrt(mid) < c) left = mid;
+		else right = mid;
+	}
+	printf("%.6lf", (left + right) / 2);
+	return (0);
+}
